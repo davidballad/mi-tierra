@@ -1,0 +1,28 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Product images — readable by anyone, writable only by authenticated sellers
+    match /products/{shopId}/{allPaths=**} {
+      allow read:  if true;
+      allow write: if request.auth != null
+                   && request.auth.uid != null
+                   && request.resource.size < 5 * 1024 * 1024   // max 5 MB
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    // Shop avatars / banners
+    match /shops/{shopId}/{allPaths=**} {
+      allow read:  if true;
+      allow write: if request.auth != null
+                   && request.resource.size < 2 * 1024 * 1024   // max 2 MB
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    // Block everything else by default
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

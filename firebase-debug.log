@@ -1,0 +1,131 @@
+[debug] [2026-04-14T18:33:52.215Z] ----------------------------------------------------------------------
+[debug] [2026-04-14T18:33:52.216Z] Command:       /opt/homebrew/Cellar/node/25.9.0_1/bin/node /opt/homebrew/bin/firebase init apphosting
+[debug] [2026-04-14T18:33:52.216Z] CLI Version:   15.14.0
+[debug] [2026-04-14T18:33:52.216Z] Platform:      darwin
+[debug] [2026-04-14T18:33:52.216Z] Node Version:  v25.9.0
+[debug] [2026-04-14T18:33:52.216Z] Time:          Tue Apr 14 2026 13:33:52 GMT-0500 (Ecuador Time)
+[debug] [2026-04-14T18:33:52.216Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/david/Documents/Code/mi_tierra
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] 
+[debug] [2026-04-14T18:33:52.449Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-14T18:33:52.449Z] > authorizing via signed-in user (davichoballa@gmail.com)
+[debug] [2026-04-14T18:33:52.450Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:52.450Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:52.450Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mi-tierra-7241b [none]
+[debug] [2026-04-14T18:33:52.894Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mi-tierra-7241b 200
+[debug] [2026-04-14T18:33:52.894Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mi-tierra-7241b {"projectId":"mi-tierra-7241b","projectNumber":"962311629117","displayName":"mi-tierra","name":"projects/mi-tierra-7241b","resources":{"hostingSite":"mi-tierra-7241b"},"state":"ACTIVE","etag":"1_1c3207ba-cdd1-4b64-b723-10cefcae40dd"}
+[info] i  Using project mi-tierra-7241b (mi-tierra) . 
+[info] 
+=== App Hosting Setup
+[debug] [2026-04-14T18:33:52.904Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:52.904Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:52.904Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/mi-tierra-7241b/billingInfo [none]
+[debug] [2026-04-14T18:33:53.468Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/mi-tierra-7241b/billingInfo 200
+[debug] [2026-04-14T18:33:53.468Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/mi-tierra-7241b/billingInfo {"name":"projects/mi-tierra-7241b/billingInfo","projectId":"mi-tierra-7241b","billingAccountName":"billingAccounts/0135FD-BE1D7B-FFACD7","billingEnabled":true}
+[debug] [2026-04-14T18:33:53.469Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:53.469Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:53.470Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com [none]
+[debug] [2026-04-14T18:33:53.470Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:33:54.217Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com 200
+[debug] [2026-04-14T18:33:54.217Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2026-04-14T18:33:54.217Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:54.217Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:33:54.218Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com:enable [none]
+[debug] [2026-04-14T18:33:54.218Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com:enable  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:33:55.251Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com:enable 200
+[debug] [2026-04-14T18:33:55.251Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/firebaseapphosting.googleapis.com:enable [omitted]
+[debug] [2026-04-14T18:34:05.261Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.262Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com [none]
+[debug] [2026-04-14T18:34:05.262Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:05.263Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/cloudbuild.googleapis.com [none]
+[debug] [2026-04-14T18:34:05.264Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/cloudbuild.googleapis.com  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:05.264Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/secretmanager.googleapis.com [none]
+[debug] [2026-04-14T18:34:05.264Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/secretmanager.googleapis.com  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:05.265Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/run.googleapis.com [none]
+[debug] [2026-04-14T18:34:05.265Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/run.googleapis.com  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:05.266Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/artifactregistry.googleapis.com [none]
+[debug] [2026-04-14T18:34:05.266Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/artifactregistry.googleapis.com  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:05.267Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/iam.googleapis.com [none]
+[debug] [2026-04-14T18:34:05.267Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/iam.googleapis.com  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:05.931Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/secretmanager.googleapis.com 200
+[debug] [2026-04-14T18:34:05.931Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/secretmanager.googleapis.com [omitted]
+[debug] [2026-04-14T18:34:05.943Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/iam.googleapis.com 200
+[debug] [2026-04-14T18:34:05.943Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/iam.googleapis.com [omitted]
+[debug] [2026-04-14T18:34:05.950Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com 200
+[debug] [2026-04-14T18:34:05.950Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com [omitted]
+[debug] [2026-04-14T18:34:05.950Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.950Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:05.950Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com:enable [none]
+[debug] [2026-04-14T18:34:05.950Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com:enable  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:05.951Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/cloudbuild.googleapis.com 200
+[debug] [2026-04-14T18:34:05.951Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/cloudbuild.googleapis.com [omitted]
+[debug] [2026-04-14T18:34:05.957Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/artifactregistry.googleapis.com 200
+[debug] [2026-04-14T18:34:05.957Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/artifactregistry.googleapis.com [omitted]
+[debug] [2026-04-14T18:34:05.964Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/run.googleapis.com 200
+[debug] [2026-04-14T18:34:05.965Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/run.googleapis.com [omitted]
+[debug] [2026-04-14T18:34:06.621Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com:enable 200
+[debug] [2026-04-14T18:34:06.621Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/mi-tierra-7241b/services/developerconnect.googleapis.com:enable [omitted]
+[debug] [2026-04-14T18:34:16.629Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:16.629Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:16.629Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts/firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com:testIamPermissions [none]
+[debug] [2026-04-14T18:34:16.629Z] >>> [apiv2][(partial)header] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts/firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com:testIamPermissions  x-goog-user-project=mi-tierra-7241b
+[debug] [2026-04-14T18:34:16.629Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts/firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2026-04-14T18:34:17.258Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts/firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com:testIamPermissions 404
+[debug] [2026-04-14T18:34:17.259Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts/firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com:testIamPermissions {"error":{"code":404,"message":"Unknown service account","status":"NOT_FOUND"}}
+[debug] [2026-04-14T18:34:17.260Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:17.260Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:17.260Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts [none]
+[debug] [2026-04-14T18:34:17.260Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts {"accountId":"firebase-app-hosting-compute","serviceAccount":{"displayName":"Firebase App Hosting compute service account","description":"Default service account used to run builds and deploys for Firebase App Hosting"}}
+[debug] [2026-04-14T18:34:18.163Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts 200
+[debug] [2026-04-14T18:34:18.163Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/mi-tierra-7241b/serviceAccounts [omitted]
+[debug] [2026-04-14T18:34:18.164Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:18.164Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:18.164Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mi-tierra-7241b:getIamPolicy [none]
+[debug] [2026-04-14T18:34:18.779Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mi-tierra-7241b:getIamPolicy 200
+[debug] [2026-04-14T18:34:18.779Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mi-tierra-7241b:getIamPolicy {"version":1,"etag":"BwZPb9fYRnk=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:962311629117@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-962311629117@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:962311629117-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-962311629117@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:davichoballa@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-962311629117@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]}]}
+[debug] [2026-04-14T18:34:18.780Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:18.780Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:18.780Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mi-tierra-7241b:setIamPolicy [none]
+[debug] [2026-04-14T18:34:18.780Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mi-tierra-7241b:setIamPolicy {"policy":{"version":1,"etag":"BwZPb9fYRnk=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:962311629117@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-962311629117@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:962311629117-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com","serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-962311629117@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:davichoballa@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-962311629117@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaseapphosting.computeRunner","members":["serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/developerconnect.readTokenAccessor","members":["serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/storage.objectViewer","members":["serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]}]},"updateMask":"bindings"}
+[debug] [2026-04-14T18:34:19.654Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mi-tierra-7241b:setIamPolicy 200
+[debug] [2026-04-14T18:34:19.654Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mi-tierra-7241b:setIamPolicy {"version":1,"etag":"BwZPb9jtVpw=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:962311629117@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-962311629117@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/developerconnect.readTokenAccessor","members":["serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:962311629117-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com","serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaseapphosting.computeRunner","members":["serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-962311629117@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-962311629117@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:davichoballa@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-962311629117@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com"]},{"role":"roles/storage.objectViewer","members":["serviceAccount:firebase-app-hosting-compute@mi-tierra-7241b.iam.gserviceaccount.com"]}]}
+[info] i  This command links your local project to Firebase App Hosting. You will be able to deploy your web app with `firebase deploy` after setup. 
+[info] i  === Set up your backend 
+[debug] [2026-04-14T18:34:19.663Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:19.663Z] Checked if tokens are valid: true, expires at: 1776195146458
+[debug] [2026-04-14T18:34:19.663Z] >>> [apiv2][query] GET https://firebaseapphosting.googleapis.com/v1beta/projects/mi-tierra-7241b/locations 
+[debug] [2026-04-14T18:34:20.049Z] <<< [apiv2][status] GET https://firebaseapphosting.googleapis.com/v1beta/projects/mi-tierra-7241b/locations 200
+[debug] [2026-04-14T18:34:20.049Z] <<< [apiv2][body] GET https://firebaseapphosting.googleapis.com/v1beta/projects/mi-tierra-7241b/locations {"locations":[{"name":"projects/mi-tierra-7241b/locations/asia-east1","locationId":"asia-east1","displayName":"Taiwan"},{"name":"projects/mi-tierra-7241b/locations/asia-southeast1","locationId":"asia-southeast1","displayName":"Singapore"},{"name":"projects/mi-tierra-7241b/locations/europe-west4","locationId":"europe-west4","displayName":"Netherlands"},{"name":"projects/mi-tierra-7241b/locations/us-central1","locationId":"us-central1","displayName":"Iowa"},{"name":"projects/mi-tierra-7241b/locations/us-east4","locationId":"us-east4","displayName":"Northern Virginia"},{"name":"projects/mi-tierra-7241b/locations/us-east5","locationId":"us-east5","displayName":"Columbus"}]}
+[info] ✔  Location set to us-central1.
+ 

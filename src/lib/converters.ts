@@ -88,6 +88,7 @@ export const orderConverter: FirestoreDataConverter<Order> = {
       paymentMethod: d.paymentMethod as Order["paymentMethod"],
       buyerWhatsApp: (d.buyerWhatsApp as string) ?? "",
       paymentProofUrl: d.paymentProofUrl as string | undefined,
+      shippingFee: (d.shippingFee as number) ?? 0,
       createdAt: toDate(d.createdAt),
     };
   },

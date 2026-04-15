@@ -4,7 +4,8 @@
 
 export type UserRole = "buyer" | "seller";
 
-export type ProductCategory =
+/** The eight built-in categories — used for filter UI and the categories browse page. */
+export type PredefinedCategory =
   | "Textiles de Otavalo"
   | "Sombreros de Paja Toquilla"
   | "Cerámica de Cuenca"
@@ -13,6 +14,12 @@ export type ProductCategory =
   | "Artesanías en Madera"
   | "Joyería en Plata"
   | "Tejidos Andinos";
+
+/**
+ * Product category stored in Firestore.
+ * Accepts any string so artisans can define custom categories beyond the eight presets.
+ */
+export type ProductCategory = string;
 
 export type OrderStatus =
   | "pending"
@@ -46,6 +53,8 @@ export interface Shop {
   accountNumber?: string;
   accountHolderName?: string;
   cedula?: string;
+  /** Flat shipping fee in USD for one order, regardless of item count. 0 = free. */
+  shippingFee?: number;
 }
 
 /** /products/{id} */
@@ -84,6 +93,8 @@ export interface Order {
   buyerWhatsApp: string;
   /** Firebase Storage download URL — only set for transferencia orders. */
   paymentProofUrl?: string;
+  /** Shipping fee charged at the time of order (snapshot from shop, in USD). */
+  shippingFee: number;
   createdAt: Date;
 }
 

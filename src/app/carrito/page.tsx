@@ -177,12 +177,15 @@ export default function CarritoPage() {
           accountNumber: d.accountNumber as string | undefined,
           accountHolderName: d.accountHolderName as string | undefined,
           cedula: d.cedula as string | undefined,
+          shippingFee: d.shippingFee as number | undefined,
         });
       })
       .catch(() => {/* no bank data — that's fine */});
   }, [items]);
 
   const hasBank = Boolean(shopData?.bankName && shopData?.accountNumber);
+  const shipping = shopData ? (shopData.shippingFee ?? 0) : undefined; // undefined = still loading
+  const orderTotal = subtotal + (shipping ?? 0);
   const { fee: platformFee, sellerNet } = calcPlatformFee(subtotal);
 
   async function handleConfirm() {
@@ -223,8 +226,9 @@ export default function CarritoPage() {
         buyerId: user.uid,
         shopId: items[0].product.shopId,
         items: orderItems,
-        totalPrice: subtotal,
+        totalPrice: orderTotal,
         platformFee,
+        shippingFee: shipping ?? 0,
         status: "pending",
         paymentMethod,
         buyerWhatsApp: whatsapp.trim(),
@@ -369,13 +373,19 @@ export default function CarritoPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Envío</span>
-                    <span className="text-muted-foreground">Coordinado con el artesano</span>
+                    <span className={`font-medium ${shipping === undefined ? "text-muted-foreground" : shipping === 0 ? "text-forest" : "text-forest"}`}>
+                      {shipping === undefined
+                        ? "Calculando…"
+                        : shipping === 0
+                        ? "Gratis 🎉"
+                        : `$${shipping.toFixed(2)}`}
+                    </span>
                   </div>
                 </div>
 
                 <div className="border-t border-sand pt-3 flex justify-between">
                   <span className="font-semibold text-forest">Total</span>
-                  <span className="font-heading text-xl font-bold text-terracotta">${subtotal.toFixed(2)}</span>
+                  <span className="font-heading text-xl font-bold text-terracotta">${orderTotal.toFixed(2)}</span>
                 </div>
 
                 {/* Payment method selector */}

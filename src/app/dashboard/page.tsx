@@ -53,6 +53,7 @@ export default function DashboardPage() {
           accountNumber: d.accountNumber as string | undefined,
           accountHolderName: d.accountHolderName as string | undefined,
           cedula: d.cedula as string | undefined,
+          shippingFee: d.shippingFee as number | undefined,
         });
       }
       setShopLoading(false);
@@ -136,6 +137,7 @@ export default function DashboardPage() {
                   accountNumber: shopData?.accountNumber,
                   accountHolderName: shopData?.accountHolderName,
                   cedula: shopData?.cedula,
+                  shippingFee: shopData?.shippingFee,
                 }}
               />
             )

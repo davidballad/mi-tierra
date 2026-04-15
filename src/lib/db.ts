@@ -126,6 +126,12 @@ export async function fetchShop(shopId: string): Promise<Shop | null> {
     bio: d.bio ?? "",
     rating: d.rating ?? 0,
     createdAt: d.createdAt?.toDate?.() ?? new Date(),
+    bankName: d.bankName,
+    accountType: d.accountType,
+    accountNumber: d.accountNumber,
+    accountHolderName: d.accountHolderName,
+    cedula: d.cedula,
+    shippingFee: d.shippingFee,
   };
 }
 

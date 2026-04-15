@@ -26,7 +26,20 @@ interface ProductFormProps {
 export default function ProductForm({ shopId, shopName, product, onDone, onCancel }: ProductFormProps) {
   const isEdit = Boolean(product);
   const [title, setTitle] = useState(product?.title ?? "");
-  const [category, setCategory] = useState(product?.category ?? PRODUCT_CATEGORIES[0].value);
+
+  // Category: preset from the 8 defaults, or custom free-text
+  const isPreset = (cat: string) => PRODUCT_CATEGORIES.some((c) => c.value === cat);
+  const initialCat = product?.category ?? PRODUCT_CATEGORIES[0].value;
+  const [categoryMode, setCategoryMode] = useState<"preset" | "custom">(
+    isPreset(initialCat) ? "preset" : "custom"
+  );
+  const [presetCategory, setPresetCategory] = useState(
+    isPreset(initialCat) ? initialCat : PRODUCT_CATEGORIES[0].value
+  );
+  const [customCategory, setCustomCategory] = useState(
+    isPreset(initialCat) ? "" : initialCat
+  );
+
   const [price, setPrice] = useState(product?.price?.toString() ?? "");
   const [stock, setStock] = useState(product?.stock?.toString() ?? "");
   const [province, setProvince] = useState(product?.provinceOrigin ?? "");
@@ -43,6 +56,9 @@ export default function ProductForm({ shopId, shopName, product, onDone, onCance
     if (!db) { setError("Firebase no disponible."); return; }
     if (!isEdit && !imageFile) { setError("Por favor sube una imagen del producto."); return; }
 
+    const finalCategory = categoryMode === "preset" ? presetCategory : customCategory.trim();
+    if (!finalCategory) { setError("Por favor escribe el nombre de la categoría."); return; }
+
     setSaving(true); setError(null);
     try {
       let imageUrl = existingImage ?? "";
@@ -56,7 +72,7 @@ export default function ProductForm({ shopId, shopName, product, onDone, onCance
       const payload = {
         shopId, shopName,
         title: title.trim(),
-        category,
+        category: finalCategory,
         price: parseFloat(price),
         stock: parseInt(stock, 10),
         provinceOrigin: province,
@@ -96,11 +112,32 @@ export default function ProductForm({ shopId, shopName, product, onDone, onCance
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Categoría</label>
-          <select value={category} onChange={(e) => setCategory(e.target.value as typeof category)} className={field}>
+          <select
+            value={categoryMode === "preset" ? presetCategory : "__custom__"}
+            onChange={(e) => {
+              if (e.target.value === "__custom__") {
+                setCategoryMode("custom");
+              } else {
+                setCategoryMode("preset");
+                setPresetCategory(e.target.value);
+              }
+            }}
+            className={field}
+          >
             {PRODUCT_CATEGORIES.map(({ value, label }) => (
               <option key={value} value={value}>{label}</option>
             ))}
+            <option value="__custom__">✏️ Otra categoría…</option>
           </select>
+          {categoryMode === "custom" && (
+            <input
+              type="text"
+              value={customCategory}
+              onChange={(e) => setCustomCategory(e.target.value)}
+              placeholder="Ej: Bordados Amazónicos, Artesanías de Cuero…"
+              className={`${field} mt-2`}
+            />
+          )}
         </div>
         <div>
           <label className={labelCls}>Provincia de origen</label>

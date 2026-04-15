@@ -5,6 +5,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import { AuthFlowProvider } from "@/contexts/AuthFlowContext";
+import { CartProvider } from "@/contexts/CartContext";
 import AuthFlowManager from "@/components/auth/AuthFlowManager";
 import "./globals.css";
 
@@ -39,8 +40,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-cream">
         <AuthFlowProvider>
-          {children}
-          <AuthFlowManager />
+          <CartProvider>
+            {children}
+            <AuthFlowManager />
+          </CartProvider>
         </AuthFlowProvider>
       </body>
     </html>

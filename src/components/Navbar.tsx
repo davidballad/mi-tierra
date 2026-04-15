@@ -6,9 +6,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X, Leaf, LogOut } from "lucide-react";
+import { Menu, X, Leaf, LogOut, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuthFlow } from "@/contexts/AuthFlowContext";
+import { useCart } from "@/contexts/CartContext";
 
 const NAV_LINKS = [
   { label: "Explorar", href: "/explorar" },
@@ -19,6 +20,7 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, firestoreUser, loading, openAuthModal, signOut } = useAuthFlow();
+  const { itemCount } = useCart();
 
   const initials = (
     user?.displayName?.[0] ?? user?.email?.[0] ?? "U"
@@ -45,6 +47,20 @@ export default function Navbar() {
               </Link>
             ))}
           </nav>
+
+          {/* Cart icon */}
+          <Link
+            href="/carrito"
+            aria-label={`Carrito${itemCount > 0 ? ` — ${itemCount} productos` : ""}`}
+            className="relative p-1.5 rounded-md text-forest hover:text-terracotta hover:bg-sand transition-colors"
+          >
+            <ShoppingCart className="h-5 w-5" />
+            {itemCount > 0 && (
+              <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-terracotta text-white text-[10px] font-bold flex items-center justify-center leading-none">
+                {itemCount > 9 ? "9+" : itemCount}
+              </span>
+            )}
+          </Link>
 
           {/* Desktop auth */}
           <div className="hidden sm:flex items-center gap-3">

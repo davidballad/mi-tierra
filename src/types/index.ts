@@ -67,6 +67,19 @@ export interface Order {
   status: OrderStatus;
 }
 
+/**
+ * Serializable product snapshot stored in the cart.
+ * Omits `createdAt` (Date) so it can be passed as a server-component prop
+ * and safely round-tripped through localStorage.
+ */
+export type CartProduct = Omit<Product, "createdAt">;
+
+/** A single line item in the shopping cart. */
+export interface CartItem {
+  product: CartProduct;
+  quantity: number;
+}
+
 /** UI model for the artisan showcase cards. */
 export interface ArtisanCard {
   shopId: string;

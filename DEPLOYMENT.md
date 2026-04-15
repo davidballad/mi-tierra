@@ -155,14 +155,14 @@ firebase init apphosting
 
 ```bash
 # For each variable in apphosting.yaml, create a secret:
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-firebase-api-key --data-file=-
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-firebase-auth-domain --data-file=-
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-firebase-project-id --data-file=-
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-firebase-storage-bucket --data-file=-
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-firebase-messaging-sender-id --data-file=-
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-firebase-app-id --data-file=-
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-admin-project-id --data-file=-
-echo -n "YOUR_VALUE" | gcloud secrets create mi-tierra-admin-client-email --data-file=-
+echo -n "AIzaSyD1sTYl4-L3OKn088PlmXgWhFv7z7_t7AI" | gcloud secrets create mi-tierra-firebase-api-key --data-file=-
+echo -n "mi-tierra-7241b.firebaseapp.com" | gcloud secrets create mi-tierra-firebase-auth-domain --data-file=-
+echo -n "mi-tierra-7241b" | gcloud secrets create mi-tierra-firebase-project-id --data-file=-
+echo -n "mi-tierra-7241b.firebasestorage.app" | gcloud secrets create mi-tierra-firebase-storage-bucket --data-file=-
+echo -n "962311629117" | gcloud secrets create mi-tierra-firebase-messaging-sender-id --data-file=-
+echo -n "1:962311629117:web:47fd60b7ca8425f7047d54" | gcloud secrets create mi-tierra-firebase-app-id --data-file=-
+echo -n "mi-tierra-7241b" | gcloud secrets create mi-tierra-admin-project-id --data-file=-
+echo -n "firebase-adminsdk-fbsvc@mi-tierra-7241b.iam.gserviceaccount.com" | gcloud secrets create mi-tierra-admin-client-email --data-file=-
 
 # Private key needs special handling due to newlines:
 printf '%s' "$(cat your-service-account.json | python3 -c "import sys,json; print(json.load(sys.stdin)['private_key'])")" \

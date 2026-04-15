@@ -2,6 +2,7 @@
  * Individual product card — image, title, price, province badge, and shop name.
  */
 
+import Link from "next/link";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -16,7 +17,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { title, price, provinceOrigin, shopName, images, category } = product;
 
   return (
-    <Card className="group overflow-hidden cursor-pointer border-sand hover:border-terracotta transition-all hover:shadow-md bg-white">
+    <Link href={`/producto/${product.id}`} className="block group">
+    <Card className="overflow-hidden border-sand hover:border-terracotta transition-all hover:shadow-md bg-white h-full">
       {/* Product image */}
       <div className="relative aspect-square overflow-hidden bg-sand">
         <Image
@@ -50,5 +52,6 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
     </Card>
+    </Link>
   );
 }

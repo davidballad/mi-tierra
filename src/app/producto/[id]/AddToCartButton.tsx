@@ -1,12 +1,12 @@
 /**
- * Quantity selector + add-to-cart button — client component.
- * Receives CartProduct (no Date fields) so it can be used as a server-component prop.
+ * Quantity selector + add-to-cart button.
+ * Handles one-shop-per-cart conflict with an inline confirmation prompt.
  */
 
 "use client";
 
 import { useState } from "react";
-import { ShoppingCart, Check, Minus, Plus } from "lucide-react";
+import { ShoppingCart, Check, Minus, Plus, AlertTriangle } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import type { CartProduct } from "@/types";
 
@@ -15,14 +15,28 @@ interface AddToCartButtonProps {
 }
 
 export default function AddToCartButton({ product }: AddToCartButtonProps) {
-  const { addItem } = useCart();
+  const { addItem, clearCart, items } = useCart();
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
+  const [showConflict, setShowConflict] = useState(false);
 
   const max = Math.min(product.stock, 10);
+  const existingShopName = items[0]?.product.shopName ?? "";
 
   function handleAdd() {
+    const result = addItem(product, qty);
+    if (result === "different_shop") {
+      setShowConflict(true);
+      return;
+    }
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  }
+
+  function handleReplaceCart() {
+    clearCart();
     addItem(product, qty);
+    setShowConflict(false);
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   }
@@ -35,6 +49,35 @@ export default function AddToCartButton({ product }: AddToCartButtonProps) {
       >
         Agotado
       </button>
+    );
+  }
+
+  if (showConflict) {
+    return (
+      <div className="space-y-3 rounded-xl border-2 border-amber-300 bg-amber-50 p-4">
+        <div className="flex items-start gap-2">
+          <AlertTriangle className="h-4 w-4 text-amber-600 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-amber-800">
+            Tu carrito ya tiene productos de{" "}
+            <strong>{existingShopName}</strong>. Solo puedes comprar de una
+            tienda a la vez.
+          </p>
+        </div>
+        <div className="flex gap-2">
+          <button
+            onClick={() => setShowConflict(false)}
+            className="flex-1 py-2 rounded-md border border-sand bg-white text-sm font-medium text-forest hover:bg-sand transition-colors"
+          >
+            Cancelar
+          </button>
+          <button
+            onClick={handleReplaceCart}
+            className="flex-1 py-2 rounded-md bg-terracotta text-white text-sm font-medium hover:bg-terracotta-light transition-colors"
+          >
+            Vaciar y añadir
+          </button>
+        </div>
+      </div>
     );
   }
 

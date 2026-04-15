@@ -21,6 +21,8 @@ export type OrderStatus =
   | "delivered"
   | "cancelled";
 
+export type PaymentMethod = "transferencia" | "contra_entrega";
+
 /** /users/{uid} */
 export interface FirestoreUser {
   uid: string;
@@ -38,6 +40,12 @@ export interface Shop {
   bio: string;
   rating: number;
   createdAt: Date;
+  /** Bank details — filled in by the seller via their dashboard */
+  bankName?: string;
+  accountType?: "ahorros" | "corriente";
+  accountNumber?: string;
+  accountHolderName?: string;
+  cedula?: string;
 }
 
 /** /products/{id} */
@@ -55,16 +63,28 @@ export interface Product {
   createdAt: Date;
 }
 
+/** A single line item inside an order. */
+export interface OrderItem {
+  productId: string;
+  title: string;   // denormalized so it survives product edits
+  price: number;
+  quantity: number;
+}
+
 /** /orders/{id} */
 export interface Order {
   id: string;
   buyerId: string;
   shopId: string;
-  productId: string;
-  quantity: number;
+  items: OrderItem[];
   totalPrice: number;
   platformFee: number;
   status: OrderStatus;
+  paymentMethod: PaymentMethod;
+  buyerWhatsApp: string;
+  /** Firebase Storage download URL — only set for transferencia orders. */
+  paymentProofUrl?: string;
+  createdAt: Date;
 }
 
 /**

@@ -48,6 +48,16 @@ export default function Navbar() {
             ))}
           </nav>
 
+          {/* Seller dashboard link */}
+          {firestoreUser?.role === "seller" && (
+            <Link
+              href="/dashboard"
+              className="hidden sm:inline-flex items-center text-xs font-semibold text-forest hover:text-terracotta transition-colors border border-sand rounded-md px-3 py-1.5 hover:border-terracotta"
+            >
+              Mi Panel
+            </Link>
+          )}
+
           {/* Cart icon */}
           <Link
             href="/carrito"
@@ -109,6 +119,12 @@ export default function Navbar() {
                   {label}
                 </Link>
               ))}
+              {firestoreUser?.role === "seller" && (
+                <Link href="/dashboard" onClick={() => setMenuOpen(false)}
+                  className="px-3 py-2 text-forest hover:text-terracotta font-medium rounded-md hover:bg-sand transition-colors flex items-center gap-2">
+                  Mi Panel
+                </Link>
+              )}
               <div className="pt-2 px-3">
                 {user ? (
                   <button onClick={signOut}

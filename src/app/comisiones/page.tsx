@@ -31,9 +31,9 @@ const TIERS = [
     highlight: false,
   },
   {
-    label: "Procesamiento de pagos",
-    value: "Incluido",
-    desc: "Gestión de cobros y transferencias sin cargo adicional.",
+    label: "Modelo de pago",
+    value: "Contra entrega",
+    desc: "El comprador paga al recibir. Sin riesgo para el artesano.",
     highlight: false,
   },
 ];

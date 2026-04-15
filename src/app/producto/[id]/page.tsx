@@ -163,7 +163,7 @@ export default async function ProductoPage({ params }: Props) {
               <ul className="space-y-1.5 text-xs text-muted-foreground">
                 {[
                   "✓ Artesanía ecuatoriana auténtica",
-                  "✓ Pagos seguros (próximamente)",
+                  "✓ Pagas al recibir tu pedido",
                   "✓ Soporte en español",
                 ].map((line) => (
                   <li key={line}>{line}</li>

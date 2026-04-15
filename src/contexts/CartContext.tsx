@@ -1,6 +1,7 @@
 /**
  * Shopping cart — persisted to localStorage.
- * Uses CartProduct (no Date fields) so it survives JSON round-trips safely.
+ * Enforces one-shop-per-cart: addItem returns "different_shop" if the new
+ * product belongs to a different artisan than items already in the cart.
  */
 
 "use client";
@@ -16,13 +17,19 @@ import type { CartItem, CartProduct } from "@/types";
 
 const STORAGE_KEY = "mi-tierra-cart";
 
+export type AddItemResult = "added" | "different_shop";
+
 interface CartContextValue {
   items: CartItem[];
   /** Total number of individual units across all line items. */
   itemCount: number;
   /** Sum of price × quantity for all items. */
   subtotal: number;
-  addItem: (product: CartProduct, quantity?: number) => void;
+  /**
+   * Returns "added" on success or "different_shop" when the product belongs to
+   * a different shop than items already in the cart (cart is not mutated in that case).
+   */
+  addItem: (product: CartProduct, quantity?: number) => AddItemResult;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -45,27 +52,34 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     setHydrated(true);
   }, []);
 
-  // Persist whenever items change (skip the very first render)
+  // Persist whenever items change (skip the very first render before hydration)
   useEffect(() => {
     if (!hydrated) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   }, [items, hydrated]);
 
-  const addItem = useCallback((product: CartProduct, quantity = 1) => {
+  const addItem = useCallback((product: CartProduct, quantity = 1): AddItemResult => {
+    let result: AddItemResult = "added";
+
     setItems((prev) => {
+      // Enforce one shop per cart
+      if (prev.length > 0 && prev[0].product.shopId !== product.shopId) {
+        result = "different_shop";
+        return prev; // leave cart unchanged
+      }
+
       const existing = prev.find((i) => i.product.id === product.id);
       if (existing) {
         return prev.map((i) =>
           i.product.id === product.id
-            ? {
-                ...i,
-                quantity: Math.min(i.quantity + quantity, i.product.stock),
-              }
+            ? { ...i, quantity: Math.min(i.quantity + quantity, i.product.stock) }
             : i
         );
       }
       return [...prev, { product, quantity: Math.min(quantity, product.stock) }];
     });
+
+    return result;
   }, []);
 
   const removeItem = useCallback((productId: string) => {
@@ -94,15 +108,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <CartContext.Provider
-      value={{
-        items,
-        itemCount,
-        subtotal,
-        addItem,
-        removeItem,
-        updateQuantity,
-        clearCart,
-      }}
+      value={{ items, itemCount, subtotal, addItem, removeItem, updateQuantity, clearCart }}
     >
       {children}
     </CartContext.Provider>

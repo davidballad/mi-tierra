@@ -13,7 +13,7 @@ import { Store, ShieldCheck, TrendingUp, Banknote } from "lucide-react";
 const BENEFITS = [
   { icon: Store,       title: "Crea tu tienda gratis",   desc: "Configura tu perfil y empieza a vender en minutos." },
   { icon: TrendingUp,  title: "Llega a más compradores", desc: "Accede a clientes de todo Ecuador y el mundo." },
-  { icon: Banknote,    title: "Cobra con seguridad",     desc: "Pagos protegidos con solo 5% de comisión por venta." },
+  { icon: Banknote,    title: "Cobra con facilidad",      desc: "El comprador paga contra entrega. Tú recibes el 95% de cada venta." },
   { icon: ShieldCheck, title: "Soporte artesanal",       desc: "Te acompañamos en cada paso de tu camino." },
 ] as const;
 

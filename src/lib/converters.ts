@@ -81,11 +81,14 @@ export const orderConverter: FirestoreDataConverter<Order> = {
       id: snap.id,
       buyerId: d.buyerId as string,
       shopId: d.shopId as string,
-      productId: d.productId as string,
-      quantity: d.quantity as number,
+      items: (d.items as Order["items"]) ?? [],
       totalPrice: d.totalPrice as number,
       platformFee: d.platformFee as number,
       status: d.status as Order["status"],
+      paymentMethod: d.paymentMethod as Order["paymentMethod"],
+      buyerWhatsApp: (d.buyerWhatsApp as string) ?? "",
+      paymentProofUrl: d.paymentProofUrl as string | undefined,
+      createdAt: toDate(d.createdAt),
     };
   },
 };
